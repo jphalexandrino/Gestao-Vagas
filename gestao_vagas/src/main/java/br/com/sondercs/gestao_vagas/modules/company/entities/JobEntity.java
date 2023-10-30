@@ -27,7 +27,7 @@ public class JobEntity {
     private String level;
     
     @ManyToOne()// Uma Company para muitos Jobs
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "company_id", insertable = false, updatable = false)
     private CompanyEntity companyEntity;
 
     @Column(name = "company_id")
