@@ -1,5 +1,9 @@
 package br.com.sondercs.gestao_vagas.modules.company.useCases;
 
+import java.time.Instant;
+
+import javax.naming.AuthenticationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,7 +15,6 @@ import com.auth0.jwt.algorithms.Algorithm;
 
 import br.com.sondercs.gestao_vagas.modules.company.dto.AuthCompanyDTO;
 import br.com.sondercs.gestao_vagas.modules.company.repositories.CompanyRepository;
-import jakarta.security.auth.message.AuthException;
 
 @Service
 public class AuthCompanyUseCase {
@@ -25,7 +28,7 @@ public class AuthCompanyUseCase {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public String execute(AuthCompanyDTO authCompanyDTO) throws AuthException{
+    public String execute(AuthCompanyDTO authCompanyDTO) throws AuthenticationException{
         var company = this.companyRepository.findByUsername(authCompanyDTO.getUsername()).orElseThrow(
             () -> {
                 throw new UsernameNotFoundException("Username/Password incorrect");
@@ -34,13 +37,16 @@ public class AuthCompanyUseCase {
             var passwordMatches = this.passwordEncoder.matches(authCompanyDTO.getPassword(), company.getPassword());
             // Se não for igual:
             if (!passwordMatches) {
-                throw new AuthException();
+                throw new AuthenticationException();
             }
             // Se for igual
-            Algorithm algorithm = Algorithm.HMAC256("secretKey");
+            Algorithm algorithm = Algorithm.HMAC256(secretKey);
+
             var token = JWT.create().withIssuer("javagas")
+            .withExpiresAt(Instant.now().plus(java.time.Duration.ofHours(2)))
             .withSubject(company.getId().toString())
             .sign(algorithm);
-            return token;
+
+        return token;
     }  
 }
