@@ -12,28 +12,23 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @Configuration
 public class SecurityConfig {
 
-    @Autowired
-    private SecurityFilter securityFilter;
+  @Autowired
+  private SecurityFilter securityFilter;
 
-    @Bean // Indica que um metodo dentro da classe esta sendo ultilizado para definir algum objeto já gerenciado
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http.csrf(csrf -> csrf.disable())
+  @Bean
+  SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http.csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(auth -> {
           auth.requestMatchers("/candidate/").permitAll()
               .requestMatchers("/company/").permitAll()
-                .requestMatchers("/auth/company").permitAll()
-              ;
+              .requestMatchers("/auth/company").permitAll();
           auth.anyRequest().authenticated();
-        })
-        .addFilterBefore(securityFilter, BasicAuthenticationFilter.class);
-        ;
-        return http.build();
-    }
+        }).addFilterBefore(securityFilter, BasicAuthenticationFilter.class);
+    return http.build();
+  }
 
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
-    
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 }
