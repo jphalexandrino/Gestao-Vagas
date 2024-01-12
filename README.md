@@ -1,35 +1,38 @@
-# Gestão de Vagas - Java
+# Job Management - Java
 
-Este repositório contém um sistema de Gestão de Vagas desenvolvido em Java, fornecendo uma solução para o gerenciamento de vagas de emprego, recrutamento e processo seletivo.
+This repository contains a Job Management system developed in Java, providing a solution for job vacancy management, recruitment, and the hiring process.
 
-## Funcionalidades
+## Features
 
-- Cadastro de vagas
-- Listagem de vagas disponíveis
-- Filtros de busca por critérios (como área, cargo, localização, etc.)
-- Candidatura às vagas
-- Gerenciamento de candidaturas
-- Controle de status das vagas (abertas, fechadas, em andamento)
+- Job posting
+- Listing available jobs
+- Search filters by criteria (such as area, position, location, etc.)
+- Job application
+- Application management
+- Status control of jobs (open, closed, in progress)
 
-## Tecnologias
+## Technologies
 
-O projeto é desenvolvido utilizando as seguintes tecnologias e conceitos:
+The project is developed using the following technologies and concepts:
 
-- Linguagem de Programação: Java
+- Programming Language: Java
 - Framework: Spring Boot
-- Banco de Dados: (Incluir o banco de dados utilizado, por exemplo, MySQL, PostgreSQL, etc.)
-- Sistema de Gerenciamento de Banco de Dados (SGBD): (Incluir o SGBD utilizado, por exemplo, H2, MySQL, etc.)
+- Database: (Include the database used, for example, MySQL, PostgreSQL, etc.)
+- Database Management System (DBMS): (Include the DBMS used, for example, H2, MySQL, etc.)
 
-## Pré-requisitos
+## Prerequisites
 
 - JDK (Java Development Kit)
 - Maven
-- (Listar quaisquer outras dependências ou configurações necessárias)
+- (List any other dependencies or configurations needed)
 
-## Instalação e Execução
+## Installation and Execution
 
-1. Clone o repositório:
+1. Clone the repository:
 
    ```bash
-   git clone https://github.com/seu-usuario/gestao-vagas-java.git
-   cd gestao-vagas
+   git clone https://github.com/your-username/job-management-java.git
+   cd job-management
+   ```
+
+   <!-- Additional steps for setting up and running the application can be added here as needed. -->
