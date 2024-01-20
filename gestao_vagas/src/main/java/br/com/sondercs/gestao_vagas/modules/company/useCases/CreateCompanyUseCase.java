@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import br.com.sondercs.gestao_vagas.exceptions.UserFoundException;
 import br.com.sondercs.gestao_vagas.modules.company.entities.CompanyEntity;
 import br.com.sondercs.gestao_vagas.modules.company.repositories.CompanyRepository;
-import lombok.var;
 
 @Service
 public class CreateCompanyUseCase {
