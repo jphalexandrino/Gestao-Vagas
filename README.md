@@ -24,14 +24,13 @@ The project is developed using the following technologies and concepts:
 
 - JDK (Java Development Kit)
 - Maven
-- (List any other dependencies or configurations needed)
 
 ## Installation and Execution
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/job-management-java.git
+   git clone https://github.com/sondercs/job-management-java.git
    cd job-management
    ```
 
