@@ -34,4 +34,10 @@ The project is developed using the following technologies and concepts:
    cd job-management
    ```
 
+2. Install dependencies:
+
+   ```bash
+   mvn clean install
+   ```
+
    <!-- Additional steps for setting up and running the application can be added here as needed. -->
