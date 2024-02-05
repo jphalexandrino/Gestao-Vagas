@@ -39,5 +39,3 @@ The project is developed using the following technologies and concepts:
    ```bash
    mvn clean install
    ```
-
-   <!-- Additional steps for setting up and running the application can be added here as needed. -->
