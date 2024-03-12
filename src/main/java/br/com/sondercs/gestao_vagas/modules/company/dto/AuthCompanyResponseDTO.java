@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class AuthCompanyResponseDTO {
-    private String access_token;
-    private Long expires_in;
+  private String access_token;
+  private Long expires_in;
 }
