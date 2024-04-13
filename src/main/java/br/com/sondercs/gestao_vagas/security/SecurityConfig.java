@@ -31,11 +31,10 @@ public class SecurityConfig {
 
           auth.anyRequest().authenticated();
 
-
         })
         .addFilterBefore(securityCandidateFilter, BasicAuthenticationFilter.class)
         .addFilterBefore(securityFilter, BasicAuthenticationFilter.class);
-        
+
     return http.build();
   }
 

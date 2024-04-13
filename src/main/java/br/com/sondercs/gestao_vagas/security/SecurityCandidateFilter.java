@@ -28,28 +28,29 @@ public class SecurityCandidateFilter extends OncePerRequestFilter {
     String header = request.getHeader("Authorization");
 
     if (request.getRequestURI().startsWith("/candidate")) {
-        if (header != null) {
-          var token = this.jwtProvider.validateToken(header);
+      if (header != null) {
+        var token = this.jwtProvider.validateToken(header);
 
-          if (token == null) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            return;
-          }
-  
-          request.setAttribute("candidate_id", token.getSubject());
-          var roles = token.getClaim("roles").asList(Object.class);
+        if (token == null) {
+          response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+          return;
+        }
 
-          var grants = roles.stream()
-          .map(
-            role -> new SimpleGrantedAuthority("ROLE_" + role.toString().toUpperCase())
-          ).toList();
+        request.setAttribute("candidate_id", token.getSubject());
+        var roles = token.getClaim("roles").asList(Object.class);
 
-         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(token.getSubject(), null, grants);
-         SecurityContextHolder.getContext().setAuthentication(auth);
+        var grants = roles.stream()
+            .map(role -> new SimpleGrantedAuthority("ROLE_" + role.toString().toUpperCase()))
+            .toList();
+
+        UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(token.getSubject(), null,
+            grants);
+        SecurityContextHolder.getContext().setAuthentication(auth);
+      }
+
     }
 
     filterChain.doFilter(request, response);
   }
 
-}
 }
