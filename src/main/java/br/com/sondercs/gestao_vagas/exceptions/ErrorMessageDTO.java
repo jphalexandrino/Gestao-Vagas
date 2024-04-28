@@ -9,5 +9,4 @@ public class ErrorMessageDTO {
 
     private String message;
     private String field;
-    
 }

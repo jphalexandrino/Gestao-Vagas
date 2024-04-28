@@ -11,24 +11,22 @@ import br.com.sondercs.gestao_vagas.modules.company.repositories.CompanyReposito
 @Service
 public class CreateCompanyUseCase {
 
-    @Autowired
-    private CompanyRepository companyRepository;
+  @Autowired
+  private CompanyRepository companyRepository;
 
-    @Autowired PasswordEncoder passwordEncoder;
+  @Autowired
+  private PasswordEncoder passwordEncoder;
 
-    public CompanyEntity execute(CompanyEntity companyEntity){
-
-        this.companyRepository
+  public CompanyEntity execute(CompanyEntity companyEntity) {
+    this.companyRepository
         .findByUsernameOrEmail(companyEntity.getUsername(), companyEntity.getEmail())
-        .ifPresent((user) -> {
-            throw new UserFoundException();
+        .ifPresent(user -> {
+          throw new UserFoundException();
         });
 
-        var password = passwordEncoder.encode(companyEntity.getPassword());
-        companyEntity.setPassword(password);
+    var password = passwordEncoder.encode(companyEntity.getPassword());
+    companyEntity.setPassword(password);
 
-        return this.companyRepository.save(companyEntity);
-
-    }
-    
+    return this.companyRepository.save(companyEntity);
+  }
 }

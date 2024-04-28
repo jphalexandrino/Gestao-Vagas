@@ -14,17 +14,19 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/company")
 public class CompanyController {
-    @Autowired
-    private CreateCompanyUseCase companyUseCase;
 
-    @PostMapping("/")
-    public ResponseEntity<Object> create(@Valid @RequestBody CompanyEntity companyEntity){
-       try {
-            var result = this.companyUseCase.execute(companyEntity);
-            return ResponseEntity.ok().body(result);
-       } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-       }
+  @Autowired
+  private CreateCompanyUseCase createCompanyUseCase;
 
+  @PostMapping("/")
+  public ResponseEntity<Object> create(@Valid @RequestBody CompanyEntity companyEntity) {
+
+    try {
+      var result = this.createCompanyUseCase.execute(companyEntity);
+      return ResponseEntity.ok().body(result);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(e.getMessage());
     }
+  }
+
 }

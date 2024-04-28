@@ -30,8 +30,12 @@ The project is developed using the following technologies and concepts:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/sondercs/job-management-java.git
+   git clone https://github.com/sondercs/Gestao-Vagas.git
    cd job-management
    ```
 
-   <!-- Additional steps for setting up and running the application can be added here as needed. -->
+2. Install dependencies:
+
+   ```bash
+   mvn clean install
+   ```
