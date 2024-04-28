@@ -20,9 +20,8 @@ import lombok.Data;
 public class CompanyEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-
 
     @NotBlank()
     @Pattern(regexp = "\\S+", message = "O campo [username] não deve conter espaço.")
@@ -34,7 +33,6 @@ public class CompanyEntity {
     @Length(min = 10, max = 100, message = "O Campo [password] deve conter entre 10 e 100 carácteres")
     private String password;
 
-
     private String website;
     private String name;
     private String description;
@@ -42,5 +40,4 @@ public class CompanyEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    
 }
