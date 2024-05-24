@@ -17,7 +17,7 @@ The project is developed using the following technologies and concepts:
 
 - Programming Language: Java
 - Framework: Spring Boot
-- Database: (Include the database used, for example, MySQL, PostgreSQL, etc.)
+- Database: PostgreSQL
 - Database Management System (DBMS): (Include the DBMS used, for example, H2, MySQL, etc.)
 
 ## Prerequisites
